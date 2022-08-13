@@ -1,0 +1,7 @@
+{
+  "extends": ["next", "prettier"],
+  "rules": {
+    "max-lines": ["warn", 200],
+    "no-console": "warn"
+  }
+}
