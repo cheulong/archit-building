@@ -13,19 +13,6 @@ const Home: NextPage = () => {
   return (
     <div>
       <Navbar />
-      <button onClick={async () => await setLanguage('ja')}>
-        {t('common:Japanese')}
-      </button>
-      <br />
-      <button onClick={async () => await setLanguage('en')}>
-        {t('common:English')}
-      </button>
-      <br />
-      <button onClick={async () => await setLanguage('ko')}>
-        {t('common:Korean')}
-      </button>
-      <h1 className={styles.title}>Hello world!</h1>
-      <BaseButton />
     </div>
   );
 };
