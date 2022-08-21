@@ -2,6 +2,7 @@
   "extends": ["next", "prettier"],
   "rules": {
     "max-lines": ["warn", 200],
-    "no-console": "warn"
+    "no-console": "warn",
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }

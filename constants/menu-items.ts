@@ -4,7 +4,7 @@ export type MenuItem = {
   to: string;
 };
 
-export const menus: Array<MenuItem> = [
+export const navLink: Array<MenuItem> = [
   {
     id: 'home',
     title: 'Home',
