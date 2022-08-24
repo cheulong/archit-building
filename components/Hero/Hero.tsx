@@ -46,7 +46,7 @@ const Hero = () => {
       </div>
       <div className="col-start-1 col-span-1 row-start-5 row-span-1 flex w-4/5 m-auto justify-between">
         <div
-          className="flex justify-between items-center min-w-[100px] text-sm
+          className="flex justify-between items-center min-w-[120px] text-sm
         "
         >
           <span className=" text-[#214C86]">0{nextSlide}</span>
