@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import BaseButton from '@/components/Button/BaseButton';
 import useTranslation from 'next-translate/useTranslation';
 import setLanguage from 'next-translate/setLanguage';
+import { Hero } from '@/components/Hero';
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Navbar />
+      <Hero />
     </div>
   );
 };
