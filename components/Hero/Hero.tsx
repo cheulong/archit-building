@@ -1,3 +1,4 @@
+import { media, mediaByIndex } from '@/constants/media';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -7,16 +8,30 @@ const Hero = () => {
   const [nextSlide, setNextSlide] = useState(1);
   const onNextSlide = () => setNextSlide((prev) => prev + 1);
   const onPrevSlide = () => setNextSlide((prev) => prev - 1);
+  const SLIDE_COUNT = 5;
+  const slides = Array.from(Array(SLIDE_COUNT).keys());
+
   return (
     <section className="grid grid-cols-[6.5fr_1.5fr_1.5fr_4.5fr_1fr_3.5fr] grid-rows-[100px_190px_240px_240px_100px_100px]">
       <div className="bg-[#F6F8FA] col-start-1 col-span-3 row-start-1 row-span-5"></div>
       <div className="col-start-1 col-span-1 row-start-2 row-span-3 relative">
-        <Image
+        {slides.map((index) => (
+          <div key={index} className="embla__slide">
+            <Image
+              src={mediaByIndex(nextSlide)}
+              alt=""
+              layout="fill"
+              className="image2"
+            />
+          </div>
+        ))}
+
+        {/* <Image
           src="/assets/images/image1.png"
           alt=""
           className="image1"
           layout="fill"
-        />
+        /> */}
       </div>
       <div className="bg-[#F6F8FA] col-start-5 col-span-2 row-start-2 row-span-2"></div>
       <div className="col-start-6 col-span-1 row-start-3 row-span-5 relative">
@@ -60,25 +75,43 @@ const Hero = () => {
         </div>
         <div className="flex justify-between w-[4.5rem]">
           <button
-            className="-scale-x-150 inline-flex  stroke-[0.5] fill-current text-green-600 w-5 h-5"
+            disabled={!(nextSlide % 5 !== 1)}
+            className={` inline-flex  stroke-[0.5] fill-current text-green-600 w-5 h-5 transition-all ${
+              nextSlide % 5 !== 1
+                ? '-scale-[2.5] hover:-scale-[2.7]'
+                : '-scale-[1.5]'
+            }`}
             onClick={onPrevSlide}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 40 40"
-              className=" fill-secondaryColor stroke-secondaryColor stroke-[0.5]"
+              className={`${
+                nextSlide % 5 !== 1
+                  ? 'fill-[#214C86] stroke-[#214C86]'
+                  : 'fill-secondaryColor stroke-secondaryColor '
+              } stroke-[0.5]`}
             >
               <path d="m31.9 13.4-1.41 1.41 4.21 4.21h-33.1v2h33.1l-4.21 4.21 1.41 1.41 5.21-5.21 1.42-1.41-1.42-1.41z"></path>
             </svg>
           </button>
           <button
-            className="inline-flex scale-[2.5] fill-current text-green-600 w-5 h-5 hover:scale-[2.7] transition-all"
+            disabled={!(nextSlide % 5 !== 0)}
+            className={`inline-flex fill-current text-green-600 w-5 h-5 transition-all ${
+              nextSlide % 5 !== 0
+                ? 'scale-[2.5] hover:scale-[2.7]'
+                : 'scale-[1.5]'
+            }`}
             onClick={onNextSlide}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 40 40"
-              className=" fill-[#214C86] stroke-[#214C86] stroke-[0.5]"
+              className={`${
+                nextSlide % 5 !== 0
+                  ? 'fill-[#214C86] stroke-[#214C86]'
+                  : 'fill-secondaryColor stroke-secondaryColor '
+              } stroke-[0.5]`}
             >
               <path d="m31.9 13.4-1.41 1.41 4.21 4.21h-33.1v2h33.1l-4.21 4.21 1.41 1.41 5.21-5.21 1.42-1.41-1.42-1.41z"></path>
             </svg>
@@ -96,6 +129,27 @@ const Hero = () => {
           Watch Video
         </button>
       </div>
+      {/* <div className="embla">
+        <div className="embla__viewport">
+          <div className="embla__container">
+            <div className="embla__slide">
+              <img className="embla__slide__img" src="media/media-1.jpeg" />
+            </div>
+            <div className="embla__slide">
+              <img className="embla__slide__img" src="media/media-2.jpeg" />
+            </div>
+            <div className="embla__slide">
+              <img className="embla__slide__img" src="media/media-3.jpeg" />
+            </div>
+            <div className="embla__slide">
+              <img className="embla__slide__img" src="media/media-4.jpeg" />
+            </div>
+            <div className="embla__slide">
+              <img className="embla__slide__img" src="media/media-5.jpeg" />
+            </div>
+          </div>
+        </div>
+      </div> */}
     </section>
   );
 };
