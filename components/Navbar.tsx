@@ -6,12 +6,17 @@ import close from '/public/assets/icons/close.svg';
 import menu from '/public/assets/icons/menu.svg';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+
 import { useState } from 'react';
 const Navbar: NextPage = () => {
+  const router = useRouter();
   const [toggleMenu, setToggleMenu] = useState(false);
+  console.log(router.pathname);
+
   return (
-    <div className="w-5/6 mx-auto py-6">
-      <div className="flex justify-between items-center">
+    <div className="w-5/6 mx-auto py-6 absolute w-full">
+      <div className="flex justify-between items-center md:w-4/5  md:mx-auto mx-4">
         <Link href="/">
           <div className="items-center flex">
             <Image src={logo} height={30} width={30} alt="logo" />
@@ -25,7 +30,15 @@ const Navbar: NextPage = () => {
             {navLink.map((item: MenuItem) => (
               <li key={item.id}>
                 <Link href={item.to}>
-                  <a>{item.title}</a>
+                  <a
+                    className={`hover:opacity-50 ${
+                      router.pathname === item.to
+                        ? 'text-mainColor font-medium'
+                        : ''
+                    }`}
+                  >
+                    {item.title}
+                  </a>
                 </Link>
               </li>
             ))}
