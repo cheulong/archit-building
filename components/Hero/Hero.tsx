@@ -86,7 +86,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="col-start-2 col-span-2 row-start-5 row-span-1">
-        <button className="bg-mainColor w-full h-full text-[#fff] flex justify-around items-center hover:opacity-70 transition-opacity">
+        <button className="bg-mainColor w-full h-full text-[#fff] flex justify-around items-center hover:shadow-lg hover:shadow-mainColor transition-all active:bg-[white]">
           {/* <Image src={} alt='' layout='responsive' className='w-[25px] h-[2px] bg-mainColor inline-block mr-5 align-middle'/> */}
           <span className=" inline-block p-2 bg-[white] rounded-full bg-opacity-50">
             <span className=" bg-[white] p-4 block rounded-full">
